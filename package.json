@@ -1,0 +1,14 @@
+{
+  "name": "kalexdoscope",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "license": "LPPS narodnij licenz",
+  "dependencies": {
+    "parcel": "^1.12.3",
+    "regl": "^1.3.13"
+  },
+  "scripts": {
+    "dev": "parcel watch ./src/index.html",
+    "build": "parcel build ./src/index.html"
+  }
+}
