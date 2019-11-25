@@ -90,7 +90,7 @@ vec3 hsv2rgb(vec3 c)
   return newShader;
 }
 
-class Rave
+export class Rave
 {
   constructor(controller) {
     this.canvas = document.querySelector('#container');
@@ -156,7 +156,7 @@ class Rave
   }
 }
 
-class Sound
+export class Sound
 {
   constructor(sourceFile) {
     var audio = new Audio();
@@ -193,7 +193,7 @@ class Sound
   }
 }
 
-class Controller
+export class Controller
 {
   constructor(manufacturer) {
     this.shaderInputs = [];
@@ -381,14 +381,6 @@ class Controller
   }
 }
 
-var controller = new Controller("AKAI");
-var sound = new Sound("audio/mbp.mp3");
-controller.setSound(sound);
-
-var rave = new Rave(controller);
-rave.start();
-
-sound.audio.play();
 
 /* Hingine integration
 class Rave
