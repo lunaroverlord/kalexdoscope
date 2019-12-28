@@ -4,7 +4,7 @@ import { Renderable, Pipeline } from "./renderable.js";
 import { ImageAdapter, ISFAdapter, Postprocessor } from "./adapter.js";
 import { loadImage } from "./tools.js";
 import { Controller } from "./controller.js";
-import { MidiInput } from "./input.js";
+import { MidiInput, PushMidiInput } from "./input.js";
 import { Audio } from "./audio.js";
 import { Modulator, AudioModulator } from "./modulators.js";
 
@@ -91,10 +91,16 @@ export class Rave {
       this.renderable.renderables[1].setInput("numberOfDivisions", 2);
     }
 
+
     this.controller = new Controller(this.renderable);
-    const akaiMIDI = new MidiInput("AKAI");
-    await akaiMIDI.init();
-    this.controller.attachInputDevice(akaiMIDI);
+    // const akaiMIDI = new MidiInput("AKAI");
+    // await akaiMIDI.init();
+    // this.controller.attachInputDevice(akaiMIDI);
+
+    const abletonMIDI = new PushMidiInput();
+    await abletonMIDI.init();
+    this.controller.attachInputDevice(abletonMIDI);
+
 
     const audio = new Audio();
     navigator.mediaDevices.getUserMedia({audio: true})

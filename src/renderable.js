@@ -91,6 +91,10 @@ export class Renderable {
     this.source.hooks.updateInput(name, value);
     return this;
   }
+
+  getInput = (name) => {
+    return [this.inputs[name], this.spec.find(param => param.name == name)];
+  }
 }
 
 export class Pipeline extends Renderable
@@ -166,5 +170,10 @@ export class Pipeline extends Renderable
   setInput = (name, value) => {
     const [stageName, paramName] = name.split(":");
     return this.renderables.find(r => r.name === stageName).setInput(paramName, value);
+  }
+
+  getInput = (name) => {
+    const [stageName, paramName] = name.split(":");
+    return this.renderables.find(r => r.name === stageName).getInput(paramName);
   }
 }

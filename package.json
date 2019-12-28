@@ -5,6 +5,7 @@
   "license": "LPPS narodnij licenz",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@garrensmith/abletonpush": "https://github.com/mx781/abletonpush.git#57a7f40",
     "interactive-shader-format": "^2.9.0",
     "parcel": "^1.12.3",
     "regl": "^1.3.13"

@@ -1123,6 +1123,25 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@garrensmith/abletonpush@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@garrensmith/abletonpush/-/abletonpush-1.0.1.tgz#8ef631289ca3f9284ef8be425fdfa97765ae6da4"
+  integrity sha512-ivaPujprnfgbJvOfJEbRttBnpV5vWrfddIpmChRBaKQ7G4/fszPy/N8UiczdUSE76jQXiyzDPA/L94MT7awkww==
+  dependencies:
+    eventemitter2 "^5.0.1"
+    lodash.clone "^4.5.0"
+    lodash.range "^3.2.0"
+    webmidi "^2.0.5"
+
+"@garrensmith/abletonpush@https://github.com/mx781/abletonpush.git#57a7f40":
+  version "1.0.1"
+  resolved "https://github.com/mx781/abletonpush.git#57a7f4011037a256e681718589764020c12560e0"
+  dependencies:
+    eventemitter2 "^5.0.1"
+    lodash.clone "^4.5.0"
+    lodash.range "^3.2.0"
+    webmidi "^2.0.5"
+
 "@iarna/toml@^2.2.0":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.3.tgz#f060bf6eaafae4d56a7dac618980838b0696e2ab"
@@ -2884,6 +2903,11 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
+eventemitter2@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-5.0.1.tgz#6197a095d5fb6b57e8942f6fd7eaad63a09c9452"
+  integrity sha1-YZegldX7a1folC9v1+qtY6CclFI=
+
 events@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.0.0.tgz#9a0a0dfaf62893d92b875b8f2698ca4114973e88"
@@ -3715,6 +3739,11 @@ lodash.clone@^4.5.0:
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
+
+lodash.range@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.range/-/lodash.range-3.2.0.tgz#f461e588f66683f7eadeade513e38a69a565a15d"
+  integrity sha1-9GHliPZmg/fq3q3lE+OKaaVloV0=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
@@ -5711,6 +5740,11 @@ wcwidth@^1.0.1:
 webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
+
+webmidi@^2.0.5:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/webmidi/-/webmidi-2.5.1.tgz#e98b0bb5356afb5112aaff7eaac23606cf0b71d0"
+  integrity sha512-rX9/vBBSnSZR04ZZcLWCe/ujOizH9f/Q9HX11+Zw+HHwOy7edUTbbC3Axc2RjoiDQ2W7RkK1tY4yv0nYSfUcJg==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.5:
   version "1.0.5"
