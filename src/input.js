@@ -78,10 +78,10 @@ export class MidiInput extends InputDevice {
         //this.toggleNote(e.note.name, e.note.octave, false);
       }
     );
-    
+
     input.addListener('controlchange', "all", e => {
         //console.log("Control change", e.data);
-      
+
         //AKAI specific remapping
         let controlIndex = Math.max(e.data[1] - 1, 0);
         if(e.data[1] == 0)

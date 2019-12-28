@@ -49,11 +49,12 @@ export class Renderable {
       uniforms: {
         RENDERSIZE: (context) => [context["viewportWidth"], context["viewportHeight"]],
         TIME: regl.context("time"),
+        ...this.source.getUniforms(),
         ...this.getParams(this.inputs),
       },
       framebuffer: this.fbo
     };
-    //console.log("reglDef", reglDef);
+    // console.log("reglDef", reglDef);
 
     this.target = regl(reglDef);
     this.loaded = true;
@@ -79,7 +80,7 @@ export class Renderable {
 
   render = () => {
     if(this.loaded)
-      this.target();
+      this.target(this.source.getProps());
   }
 
   getTextureParams = () => {
