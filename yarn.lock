@@ -1123,16 +1123,6 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@garrensmith/abletonpush@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@garrensmith/abletonpush/-/abletonpush-1.0.1.tgz#8ef631289ca3f9284ef8be425fdfa97765ae6da4"
-  integrity sha512-ivaPujprnfgbJvOfJEbRttBnpV5vWrfddIpmChRBaKQ7G4/fszPy/N8UiczdUSE76jQXiyzDPA/L94MT7awkww==
-  dependencies:
-    eventemitter2 "^5.0.1"
-    lodash.clone "^4.5.0"
-    lodash.range "^3.2.0"
-    webmidi "^2.0.5"
-
 "@garrensmith/abletonpush@https://github.com/mx781/abletonpush.git#57a7f40":
   version "1.0.1"
   resolved "https://github.com/mx781/abletonpush.git#57a7f4011037a256e681718589764020c12560e0"
@@ -1217,8 +1207,9 @@ acorn-walk@^6.0.1:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-6.2.0.tgz#123cb8f3b84c2171f1f7fb252615b1c78a6b1a8c"
 
 acorn@^5.0.0:
-  version "5.7.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.4.tgz#3e8d8a9947d0599a1796d10225d7432f4a4acf5e"
+  integrity sha512-1D++VG7BhrtvQpNbBzovKNc1FLGGEE/oGe7b9xJm/RFHMBeUaUGpluV9RLjZa47YFdPcDAenEYuq9pQPcMdLJg==
 
 acorn@^6.0.1, acorn@^6.0.4:
   version "6.3.0"
