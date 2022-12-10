@@ -1123,16 +1123,6 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@garrensmith/abletonpush@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@garrensmith/abletonpush/-/abletonpush-1.0.1.tgz#8ef631289ca3f9284ef8be425fdfa97765ae6da4"
-  integrity sha512-ivaPujprnfgbJvOfJEbRttBnpV5vWrfddIpmChRBaKQ7G4/fszPy/N8UiczdUSE76jQXiyzDPA/L94MT7awkww==
-  dependencies:
-    eventemitter2 "^5.0.1"
-    lodash.clone "^4.5.0"
-    lodash.range "^3.2.0"
-    webmidi "^2.0.5"
-
 "@garrensmith/abletonpush@https://github.com/mx781/abletonpush.git#57a7f40":
   version "1.0.1"
   resolved "https://github.com/mx781/abletonpush.git#57a7f4011037a256e681718589764020c12560e0"
@@ -4733,8 +4723,9 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
+  integrity sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==
 
 querystring-es3@^0.2.0:
   version "0.2.1"
