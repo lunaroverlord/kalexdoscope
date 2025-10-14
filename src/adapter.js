@@ -2,6 +2,7 @@ import ISF from "interactive-shader-format";
 import { loadImage } from "./tools.js";
 
 import { getRegl } from "./graphics.js";
+import resl from "resl";
 const regl = getRegl();
 
 export class Source
@@ -13,6 +14,8 @@ export class Source
     updateInput: () => {},
     inputMap: () => {}
   }
+  getUniforms = () => {}
+  getProps = () => {}
 }
 
 export class ImageAdapter extends Source
@@ -51,6 +54,87 @@ export class ImageAdapter extends Source
   })
 
   getParamSpec = () => ([{ name: "image", type: "image" }]);
+}
+
+export class VideoAdapter extends Source
+{
+  constructor(videoSource) {
+    super();
+    this.videoSource = videoSource;
+  }
+
+  async parse() {
+    return new Promise((resolve, reject) => {
+      resl({
+        manifest: {
+          video: {
+            type: 'video',
+            src: this.videoSource,
+            stream: true
+          }
+        },
+
+        onDone: ({video}) => {
+          this.video = video
+          this.video.autoplay = true
+          this.video.loop = true
+          this.video.play()
+          this.videoTexture = regl.texture(this.video)
+          // console.log(this.video, this.videoTexture)
+          resolve();
+        }
+      });
+    });
+  }
+
+  getShaders = () => ({
+    frag: `
+    precision mediump float;
+    uniform sampler2D texture;
+    uniform vec2 screenShape;
+    uniform float time;
+    varying vec2 uv;
+    vec4 background () {
+      vec2 pos = 0.5 - gl_FragCoord.xy / screenShape;
+      float r = length(pos);
+      float theta = atan(pos.y, pos.x);
+      return vec4(
+        cos(pos.x * time) + sin(pos.y * pos.x * time),
+        cos(100.0 * r * cos(0.3 * time) + theta),
+        sin(time / r + pos.x * cos(10.0 * time + 3.0)),
+        1);
+    }
+    void main () {
+      vec4 color = texture2D(texture, uv);
+      float chromakey = step(0.15 + max(color.r, color.b), color.g);
+      gl_FragColor = mix(color, background(), chromakey);
+    }`,
+
+    vert: `
+    precision mediump float;
+    attribute vec2 position;
+    varying vec2 uv;
+    void main () {
+      uv = vec2(1.0 - position.x, position.y);
+      gl_Position = vec4(1.0 - 2.0 * position, 0, 1);
+    }`,
+  });
+
+  getUniforms = () => ({
+    texture: regl.prop("video"),
+    time: regl.context("time"),
+    screenShape: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight]
+  });
+
+  getParams = (inputs) => ({
+    video: this.videoTexture
+  })
+
+  getProps = () => ({
+    video: this.videoTexture(this.video)
+  })
+
+  getParamSpec = () => ([{ name: "video", type: "video" }]);
 }
 
 export class ISFAdapter extends Source

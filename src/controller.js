@@ -4,7 +4,7 @@ export class Controller
 {
 
   fsm = {
-    actions: { changeScalar: "changeScalar", toggleKey: "toggleKey" },
+    actions: { getScalar: "getScalar", changeScalar: "changeScalar", toggleKey: "toggleKey" },
     states: ["init", "setupModulator"],
     state: "init",
 
@@ -24,6 +24,22 @@ export class Controller
       console.log(`fsm: ${action} ${args}`);
 
       switch(action) {
+        case actions.getScalar:
+          const [controllerIndex] = args;
+          if(fsm.state === "setupModulator")
+          {
+            //noop
+            console.log("getScalar noop due to fsm.state")
+          }
+          else 
+          {
+            const control = this.scalarParams.filter(
+              p => p.stage === fsm.stage)[controllerIndex];
+            fsm.lastParam = control;
+            return this.target.getInput(control.name);
+          }
+        break;
+
         case actions.changeScalar:
           const [controlIndex, controlValue] = args;
           if(fsm.state === "setupModulator")
@@ -131,10 +147,15 @@ export class Controller
 
   attachInputDevice = (inputDevice) => {
     inputDevice.bind({
+      getScalar: this.getScalar,
       changeScalar: this.changeScalar,
       changeMode: this.changeMode,
       changeState: this.changeState
     });
+  }
+
+  getScalar = (controlIndex) => {
+    return this.fsm.call(this.fsm.actions.getScalar, controlIndex);
   }
 
   changeScalar = (controlIndex, controlValue) => {

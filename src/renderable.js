@@ -49,11 +49,12 @@ export class Renderable {
       uniforms: {
         RENDERSIZE: (context) => [context["viewportWidth"], context["viewportHeight"]],
         TIME: regl.context("time"),
+        ...this.source.getUniforms(),
         ...this.getParams(this.inputs),
       },
       framebuffer: this.fbo
     };
-    //console.log("reglDef", reglDef);
+    // console.log("reglDef", reglDef);
 
     this.target = regl(reglDef);
     this.loaded = true;
@@ -79,7 +80,7 @@ export class Renderable {
 
   render = () => {
     if(this.loaded)
-      this.target();
+      this.target(this.source.getProps());
   }
 
   getTextureParams = () => {
@@ -90,6 +91,10 @@ export class Renderable {
     this.inputs[name] = value;
     this.source.hooks.updateInput(name, value);
     return this;
+  }
+
+  getInput = (name) => {
+    return [this.inputs[name], this.spec.find(param => param.name == name)];
   }
 }
 
@@ -166,5 +171,10 @@ export class Pipeline extends Renderable
   setInput = (name, value) => {
     const [stageName, paramName] = name.split(":");
     return this.renderables.find(r => r.name === stageName).setInput(paramName, value);
+  }
+
+  getInput = (name) => {
+    const [stageName, paramName] = name.split(":");
+    return this.renderables.find(r => r.name === stageName).getInput(paramName);
   }
 }
